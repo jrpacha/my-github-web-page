@@ -1,0 +1,219 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Derivaci&oacute; simb&ograve;lica amb MATLAB&reg;</title>
+<meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" 
+  href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" 
+  content="2018-03-07">
+  <meta name="DC.source" content="derivacioSimbolicaAmbMatlab.m">
+  <style type="text/css">
+    html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,
+    blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,
+    em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,
+    center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,
+    tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;
+      vertical-align:baseline;background:transparent}body{line-height:1}ol,
+      ul{list-style:none}blockquote,q{quotes:none}blockquote:before,
+      blockquote:after,q:before,
+      q:after{content:'';content:none}:
+        focus{outine:0}ins{text-decoration:none}
+        del{text-decoration:line-through}
+        table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+  </style></head><body><div class="content"><h1>Derivaci&oacute; simb&ograve;lica amb MATLAB&reg;</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">C&agrave;lcul de derivades parcials</a></li><li><a href="#8">C&agrave;lcul del gradient</a></li><li><a href="#12">C&agrave;lcul de la matriu hessiana</a></li><li><a href="#19">Matriu Jacobiana</a></li></ul></div><h2 id="1">C&agrave;lcul de derivades parcials</h2><p>Suposem que volem trobar les derivades parcials de la funci&oacute;:</p><p><img src="derivacioSimbolicaAmbMatlab_eq13119336613177356775.png" alt="$$f(x,y) = (x^2+y^2)\sin(xy),$$"></p><p>aix&ograve; ho fem amb la comanda <tt>diff</tt>, havent pr&egrave;viament declarat <img src="derivacioSimbolicaAmbMatlab_eq12428413953531653171.png" alt="$x$"> i <img src="derivacioSimbolicaAmbMatlab_eq08830444604280721118.png" alt="$y$"> com variables simb&ograve;liques i definit la funci&oacute; <img src="derivacioSimbolicaAmbMatlab_eq11418962735341571808.png" alt="$f(x,y)$"></p><pre class="codeinput">syms <span class="string">x</span> <span class="string">y</span>  <span class="comment">% declarem x i y com</span>
+          <span class="comment">% varibles simb&ograve;liques</span>
+<span class="comment">% ...i declarem $f$ com una funci&oacute; simb&ograve;lica mitjan&ccedil;ant la</span>
+<span class="comment">% comanda symfun:</span>
+
+f = symfun((x.^2+y.^2).*sin(x.*y), [x,y])
+</pre><pre class="codeoutput"> 
+f(x, y) =
+ 
+sin(x*y)*(x^2 + y^2)
+ 
+</pre><p><b>Nota:</b> de fet, els punts davant del sigmes <tt>^, *, /</tt>, etc, que necessit&agrave;vem per a vectoritzar les funcions <b>no</b> calen quan treballem amb funcions simb&ograve;liques.</p><p>A continuaci&oacute; calculem les derivades parcials de <img src="derivacioSimbolicaAmbMatlab_eq18096895394918367257.png" alt="$f$"> respecte de <img src="derivacioSimbolicaAmbMatlab_eq12428413953531653171.png" alt="$x$"> i respecte de <img src="derivacioSimbolicaAmbMatlab_eq08830444604280721118.png" alt="$y$">. Com ja hem dit, usarem la funci&oacute; <tt>diff</tt>, tot indicant la variable respecte de la qual es deriva,</p><pre class="codeinput">fx=diff(f(x,y),x); <span class="comment">% parcial respecte x</span>
+fx=simplify(fx)    <span class="comment">% si cal (en aquest cas, sembla que no)</span>
+pretty(fx)         <span class="comment">% per que surti 'bonic'</span>
+</pre><pre class="codeoutput"> 
+fx =
+ 
+2*x*sin(x*y) + y*cos(x*y)*(x^2 + y^2)
+ 
+                            2    2
+2 x sin(x y) + y cos(x y) (x  + y )
+
+</pre><p>Veiem que el resultat &eacute;s,</p><p><img src="derivacioSimbolicaAmbMatlab_eq07763825630016610939.png" alt="$$\frac{\partial f}{\partial x}(x,y) =&#xA; 2\,y\,\sin\left(x\,y\right)+x\,\left(x^2+y^2\right)&#xA; \cos\left(x\,y\right)$$"></p><p>De la mateixa manera, podem calcular la derivada parcial respecte y, fent</p><pre class="codeinput">fy=diff(f(x,y),y); <span class="comment">% parcial respecte y</span>
+fy=simplify(fy)    <span class="comment">% si cal (en aquest cas, sembla que tampoc)</span>
+pretty(fy)         <span class="comment">% perqu&egrave; surti 'bonic'</span>
+</pre><pre class="codeoutput"> 
+fy =
+ 
+2*y*sin(x*y) + x*cos(x*y)*(x^2 + y^2)
+ 
+                            2    2
+2 y sin(x y) + x cos(x y) (x  + y )
+
+</pre><p>&Eacute;s a dir,</p><p><img src="derivacioSimbolicaAmbMatlab_eq09588502743959892399.png" alt="$$ \frac{\partial f}{\partial y}(x,y)=&#xA;2\,x\,\sin\left(x\,y\right)+y\,\left(x^2+y^2\right)&#xA;\cos\left(x\,y\right)$$"></p><h2 id="8">C&agrave;lcul del gradient</h2><p>El gradient es calcula amb la funci&oacute; <b>MATLAB</b> <tt>gradient</tt>. Per exemple, podem torbar el gradient de la funci&oacute; <img src="derivacioSimbolicaAmbMatlab_eq11418962735341571808.png" alt="$f(x,y)$"> de la secci&oacute; anteiror tot escrivint,</p><pre class="codeinput">gradf = gradient(f(x,y)) <span class="comment">% C&agrave;lcul del gradient de f(x,y)</span>
+pretty(gradf)            <span class="comment">% per que surti 'bonic'</span>
+</pre><pre class="codeoutput"> 
+gradf =
+ 
+ 2*x*sin(x*y) + y*cos(x*y)*(x^2 + y^2)
+ 2*y*sin(x*y) + x*cos(x*y)*(x^2 + y^2)
+ 
+/                             2    2  \
+| 2 x sin(x y) + y cos(x y) (x  + y ) |
+|                                     |
+|                             2    2  |
+\ 2 y sin(x y) + x cos(x y) (x  + y ) /
+
+</pre><p>&Eacute;s a dir, el vector gradient de la funci&oacute; <img src="derivacioSimbolicaAmbMatlab_eq18096895394918367257.png" alt="$f$"> al punt <img src="derivacioSimbolicaAmbMatlab_eq18047527249248817779.png" alt="$(x,y)$"> resulta,</p><p><img src="derivacioSimbolicaAmbMatlab_eq17145023442829901098.png" alt="$$\nabla f(x,y) = \left(\frac{\partial f}{\partial x}(x,y),&#xA;\frac{\partial f}{\partial y}(x,y)\right)^{\top} =&#xA;\renewcommand{\arraystretch}{1.5}&#xA;\left(\begin{array}{c}&#xA;2 x \sin\left(x\,y\right)&#xA;+ y \left(x^2+y^2\right)\cos\left(x\,y\right)\\&#xA;2 y \sin\left(x\,y\right)&#xA;+ x \left(x^2+y^2\right)\cos\left(x\,y\right)&#xA;\end{array}\right)$$"></p><p>on fem servir el s&iacute;mbol <img src="derivacioSimbolicaAmbMatlab_eq13469275896772378644.png" alt="$^{\top}$"> per denotar la transposici&oacute; de matrius.</p><h2 id="12">C&agrave;lcul de la matriu hessiana</h2><p>Per a calcular la matriu hessina (recordem, la matriu de les derivades parcials segones) farem servir la <b>MATLAB</b> <tt>hessian</tt>. Continuant amb la mateixa funci&oacute; <img src="derivacioSimbolicaAmbMatlab_eq11418962735341571808.png" alt="$f(x,y)$">,</p><pre class="codeinput">hessf = hessian(f(x,y),[x,y]); <span class="comment">% indiquem la funci&oacute; i les variables</span>
+hessf = simplify(hessf)        <span class="comment">% simplifiquem...</span>
+pretty(hessf)                  <span class="comment">% per que surti 'bonic'</span>
+</pre><pre class="codeoutput"> 
+hessf =
+ 
+[ 2*sin(x*y) + 4*x*y*cos(x*y) - y^2*sin(x*y)*(x^2 + y^2),                (x^2 + y^2)*(3*cos(x*y) - x*y*sin(x*y))]
+[                (x^2 + y^2)*(3*cos(x*y) - x*y*sin(x*y)), 2*sin(x*y) + 4*x*y*cos(x*y) - x^2*sin(x*y)*(x^2 + y^2)]
+ 
+                                 2            2    2
+[[2 sin(x y) + 4 x y cos(x y) - y  sin(x y) (x  + y ), #1],
+
+                                      2            2    2
+  [#1, 2 sin(x y) + 4 x y cos(x y) - x  sin(x y) (x  + y )]]
+
+where
+
+           2    2
+   #1 == (x  + y ) (3 cos(x y) - x y sin(x y))
+
+
+</pre><p>Aleshores, per a la matriu Hessiana obtenim</p><p><img src="derivacioSimbolicaAmbMatlab_eq04470352360428896831.png" alt="$$\renewcommand{\arraystretch}{1.5}&#xA;\mathrm{Hess} f(x,y) =&#xA;\left(\begin{array}{cc}&#xA;\frac{\partial^{2} f}{\partial x^{2}}(x,y) &amp;&#xA;\frac{\partial^{2} f}{\partial x\partial y} (x,y)\\&#xA;\frac{\partial^{2} f}{\partial y\partial x} (x,y) &amp;&#xA;\frac{\partial^{2} f}{\partial y^{2}}(x,y)&#xA;\end{array}\right) =&#xA;\left(\begin{array}{cc}&#xA;2\,\sin\left(x\,y\right)+4\,x\,y\,\cos\left(x y\right)-y^2\,&#xA;\sin\left(x\,y\right)\,\left(x^2+y^2\right) &amp;&#xA;\left(x^2+y^2\right)\,\left(3\,\cos\left(x y\right)-x\,y\,&#xA;\sin\left(x\,y\right)\right)\\ \left(x^2+y^2\right)\,\left(3\,&#xA;\cos\left(x\,y\right)-x\,y\,\sin\left(x y\right)\right) &amp; 2\,&#xA;\sin\left(x\,y\right)+4\,x\,y\,\cos\left(x y\right)-x^2\,&#xA;\sin\left(x\,y\right)\,\left(x^2+y^2\right)&#xA;\end{array}\right)$$"></p><p>Comprovem-ho calculant cadascuna de les derivades parcials per separat. En efecte,</p><pre class="codeinput">fxx = diff(f(x,y),x,x); <span class="comment">% parcial 2ona respecte de x dos cops</span>
+fxy = diff(f(x,y),x,y); <span class="comment">% parcial 2ona respecte de x i de y</span>
+fyy = diff(f(x,y),y,y); <span class="comment">% parcial 2ona respecte de y dos cops</span>
+
+fxx = simplify(fxx);
+fxy = simplify(fxy);
+fyy = simplify(fyy);
+
+A = [fxx fxy; fxy fyy]
+pretty(A)
+</pre><pre class="codeoutput"> 
+A =
+ 
+[ 2*sin(x*y) + 4*x*y*cos(x*y) - y^2*sin(x*y)*(x^2 + y^2),                (x^2 + y^2)*(3*cos(x*y) - x*y*sin(x*y))]
+[                (x^2 + y^2)*(3*cos(x*y) - x*y*sin(x*y)), 2*sin(x*y) + 4*x*y*cos(x*y) - x^2*sin(x*y)*(x^2 + y^2)]
+ 
+                                 2            2    2
+[[2 sin(x y) + 4 x y cos(x y) - y  sin(x y) (x  + y ), #1],
+
+                                      2            2    2
+  [#1, 2 sin(x y) + 4 x y cos(x y) - x  sin(x y) (x  + y )]]
+
+where
+
+           2    2
+   #1 == (x  + y ) (3 cos(x y) - x y sin(x y))
+
+
+</pre><p><b>Nota:</b> com que la funci&oacute; &eacute;s de classe <img src="derivacioSimbolicaAmbMatlab_eq09453149978220775619.png" alt="$C^2$">, sabem que les derivades parcials 'creuades' coincideixen. Aix&ograve; &eacute;s el que, per defecte, suposa el <b>MATLAB</b>.</p><p>La differ&egrave;ncia entre les dues matrius, i.e., la calculada directament amb la funci&oacute; <tt>hessian</tt> i la constru&iuml;da directament amb les derivades parcials 2ones hauria de donar la matriu nul&middot;la (aix&ograve; &eacute;s, la matriu amb totes les seves components igual a 0). En efecte,</p><pre class="codeinput">err = simplify(hessf - A)  <span class="comment">% Comprovaci&oacute;: hauria de sortir</span>
+                           <span class="comment">% una matriu amb tot de zeros.</span>
+</pre><pre class="codeoutput"> 
+err =
+ 
+[ 0, 0]
+[ 0, 0]
+ 
+</pre><p>OK!</p><h2 id="19">Matriu Jacobiana</h2><p>Sigui la funci&oacute;:</p><p><img src="derivacioSimbolicaAmbMatlab_eq13858175299451036275.png" alt="$$ f(x,y) = \left(\cos(x+2y), y\mathrm{e}^{x+y},&#xA;\cosh(x y^{2})\right)$$"></p><p>(problema 21, apartat (c) de la col&middot;lecci&oacute;). Volem calcular la seva matriu Jacobiana (i.e., la seva matriu de derivades). La funci&oacute; de <b>MATLAB</b> que cal fer utilitzar &eacute;s <tt>jacobian</tt>. Vegem-ho,</p><pre class="codeinput">f = symfun([cos(x+2*y),y*exp(x+y),cosh(x.*y.^2)],[x,y]) <span class="comment">% definim la funci&oacute;</span>
+Jf = jacobian(f(x,y),[x,y]);
+Jf = simplify(Jf)
+pretty(Jf) <span class="comment">% per que surti 'bonic'</span>
+</pre><pre class="codeoutput"> 
+f(x, y) =
+ 
+[ cos(x + 2*y), y*exp(x + y), cosh(x*y^2)]
+ 
+ 
+Jf =
+ 
+[   -sin(x + 2*y),    -2*sin(x + 2*y)]
+[    y*exp(x + y), exp(x + y)*(y + 1)]
+[ y^2*sinh(x*y^2),  2*x*y*sinh(x*y^2)]
+ 
+/ -sin(x + 2 y),   -sin(x + 2 y) 2  \
+|                                   |
+|  y exp(x + y), exp(x + y) (y + 1) |
+|                                   |
+|  2         2                  2   |
+\ y  sinh(x y ),  2 x y sinh(x y )  /
+
+</pre><p>D'on tenim que la matriu de derivades de la funci&oacute; <img src="derivacioSimbolicaAmbMatlab_eq18096895394918367257.png" alt="$f$"> al punt <img src="derivacioSimbolicaAmbMatlab_eq18047527249248817779.png" alt="$(x,y)$"> &eacute;s,</p><p><img src="derivacioSimbolicaAmbMatlab_eq11037821294521393858.png" alt="$$ J_{f}(x,y) =&#xA;\renewcommand{\arraystretch}{1.5}&#xA;\left(\begin{array}{cc}&#xA;\frac{\partial f_{1}}{\partial x}(x,y) &amp;&#xA;\frac{\partial f_{1}}{\partial y}(x,y)\\&#xA;\frac{\partial f_{2}}{\partial x}(x,y) &amp;&#xA;\frac{\partial f_{2}}{\partial y}(x,y)\\&#xA;\frac{\partial f_{3}}{\partial x}(x,y) &amp;&#xA;\frac{\partial f_{3}}{\partial y}(x,y)\end{array}\right) =&#xA;\left(\begin{array}{cc}&#xA;-\sin\left(x+2\,y\right) &amp; -2\,\sin\left(x+2\,y\right)\\&#xA;y\,{\mathrm{e}}^{x+y} &amp; \left(y+1\right){\mathrm{e}}^{x+y}\\&#xA;y^2\,\mathrm{sinh}\left(x\,y^2\right) &amp;&#xA;2\,x\,y\,\mathrm{sinh}\left(x\,y^2\right) \end{array}\right)$$"></p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div>
+
+<p><font size="3">
+<img src="../../info/volver.png">
+  <a href="../../index.html" 
+    title="Torna a la pàgina principal" 
+    class="page">Torna a la pàgina principal</a>
+</font></p>
+
+</body></html>
